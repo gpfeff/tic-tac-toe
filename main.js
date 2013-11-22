@@ -33,11 +33,12 @@ var checkForWinner = function () {
     || spaces[2] === spaces[5] && spaces[5] === spaces[8]
     || spaces[0] === spaces[4] && spaces[4] === spaces[8]
     || spaces[2] === spaces[4] && spaces[4] === spaces[6]
-// TODO: Check for rest of game winning cases
   )
   {
+
     console.log('somebody won');
-    // TODO: Trigger 'game-win' event with the winning player as the event data
+    // Below triggers 'game-win' event, which is being listened for//
+    $(document).trigger('game-win');
   }
 };
 
