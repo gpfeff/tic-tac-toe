@@ -28,11 +28,15 @@ var checkForWinner = function () {
   if ( spaces[0] === spaces[1] && spaces[1] === spaces[2]
     || spaces[3] === spaces[4] && spaces[4] === spaces[5]
     || spaces[6] === spaces[7] && spaces[7] === spaces[8]
+    //Above are horozional conditions for winning\\
     || spaces[0] === spaces[3] && spaces[3] === spaces[6]
     || spaces[1] === spaces[4] && spaces[4] === spaces[7]
     || spaces[2] === spaces[5] && spaces[5] === spaces[8]
+    //Above are vertical conditions for winning\\
     || spaces[0] === spaces[4] && spaces[4] === spaces[8]
     || spaces[2] === spaces[4] && spaces[4] === spaces[6]
+    //Above are diagonal conditions for winning\\
+
   )
   {
 
@@ -45,19 +49,25 @@ var checkForWinner = function () {
 $(document).on('click', '#board .space', function (e) {
   var spaceNum = $(e.currentTarget).index();
   console.log('You clicked on space #' + spaceNum);
+  if (spaces[spaceNum]) {
+    alert("This space has been taken!")
+  } else {
 
   // Mark the space with the current player's name
   // TODO: Don't mark it unless the space is blank
   spaces[spaceNum] = currentPlayer;
   // Add class to elem so css can take care of the visuals
   $('#board .space:eq(' + spaceNum + ')').addClass(currentPlayer);
-
+}
   checkForWinner();
   setNextTurn();
 });
 
+
 $(document).on('game-win', function (e, winner) {
-  alert(currentPlayer + " , You've won the game!");
+  //Setting currentPlayer to variable Winnner, and passing it into the event function below //
+  var winner = currentPlayer;
+  alert(winner + " , You've won the game!");
 });
 
 // Start the game
