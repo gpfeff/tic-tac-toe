@@ -57,7 +57,7 @@ $(document).on('click', '#board .space', function (e) {
 });
 
 $(document).on('game-win', function (e, winner) {
-  alert(winner + " , You've won the game!");
+  alert(currentPlayer + " , You've won the game!");
 });
 
 // Start the game
